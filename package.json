@@ -8,7 +8,8 @@
     "build": "yarn clean && yarn build:node8 && yarn build:node6",
     "build:node8": "babel src -d lib",
     "build:node6": "BABEL_ENV=node6 babel src -d node6",
-    "test": "yarn build && docker-compose up -d mqtt && sleep 5 && jest"
+    "test": "yarn build && docker-compose up -d mqtt && sleep 5 && jest",
+    "benchmark": "docker-compose up -d && sleep 5 && node ./benchmark/runAll.js"
   },
   "main": "lib/index.js",
   "author": "Brad Decker",
@@ -16,6 +17,7 @@
   "private": false,
   "dependencies": {
     "apollo-link": "^0.7.0",
+    "benchmarkify": "^2.1.0",
     "graphql-tools": "^2.2.1",
     "lodash": "^4.17.4",
     "lodash.difference": "^4.5.0",
@@ -23,7 +25,7 @@
     "selectn": "^1.1.2"
   },
   "devDependencies": {
-    "amqplib": "^0.5.1",
+    "amqplib": "^0.5.2",
     "babel-cli": "^6.26.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-object-rest-spread": "^0.0.0",
@@ -32,8 +34,11 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-flow": "^6.23.0",
+    "express": "^4.16.2",
+    "express-graphql": "^0.6.11",
     "flow-bin": "^0.56.0",
     "jest": "^21.2.1",
+    "microtime": "^2.1.6",
     "mqtt": "^2.13.0"
   }
 }

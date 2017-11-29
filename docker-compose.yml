@@ -5,3 +5,12 @@ services:
     image: eclipse-mosquitto
     ports:
       - '1883:1883'
+
+  amqp:
+    container_name: amqp
+    image: rabbitmq:management
+    ports:
+      - '4369:4369'
+      - '5672:5672'
+      - '25672:25672'
+      - '15672:15672'
